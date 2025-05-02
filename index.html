@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rao's SMM Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 20px;
+      border-radius: 12px;
+      animation: fadeInDown 1.5s ease;
+    }
+
+    .login-box {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      width: 90%;
+      max-width: 400px;
+      animation: slideUp 1.8s ease;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .login-box button:hover {
+      background: #0097a7;
+    }
+
+    .about {
+      margin-top: 25px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      text-align: center;
+      max-width: 600px;
+      animation: fadeInUp 2s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Rao's SMM Service Provider in World</h1>
+
+  <div class="login-box">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="tel" id="mobile" placeholder="Mobile Number" required>
+    <input type="text" id="insta" placeholder="Instagram ID" required>
+    <button onclick="submitForm()">Submit</button>
+  </div>
+
+  <div class="about">
+    <p><strong>About Rao's SMM Service:</strong><br>
+    We provide real and genuine services. No fraud. You get real views, followers, and likes by our website. No ID ban issues ever.</p>
+  </div>
+
+  <script>
+    function submitForm() {
+      const name = document.getElementById("name").value;
+      const mobile = document.getElementById("mobile").value;
+      const insta = document.getElementById("insta").value;
+
+      if (!name || !mobile || !insta) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const token = "8141248526:AAFIbcmyATNH19QsnTx_cxxkVV7g2MKso_M";
+      const chatId = "7034227141";
+      const message = `New Login Request from Rao's SMM:\n\nName: ${name}\nMobile: ${mobile}\nInstagram ID: ${insta}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+        })
+      })
+      .then(res => {
+        alert("Login Submitted Successfully!");
+        window.location.href = "main.html"; // Redirect after success
+      })
+      .catch(err => {
+        alert("Failed to send. Please try again.");
+        console.error(err);
+      });
+    }
+  </script>
+
+</body>
+</html>
