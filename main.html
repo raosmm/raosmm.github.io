@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rao's Smm - World best smm services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header img {
+      height: 60px;
+    }
+    header .wallet {
+      background: #00f2fe;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.5);
+    }
+    header .wallet:hover {
+      transform: scale(1.05);
+      background: #0ff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin: 30px 0 10px;
+      text-shadow: 2px 2px #000;
+    }
+    .counter {
+      text-align: center;
+      font-size: 1.4em;
+      margin-bottom: 30px;
+    }
+    .services {
+      padding: 20px;
+      display: grid;
+      gap: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .service {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+    }
+    .service input, .service select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1em;
+    }
+    .service button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #00f2fe, #4facfe);
+      box-shadow: 0 5px 15px rgba(0,242,254,0.5);
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .service button:hover {
+      transform: scale(1.05);
+    }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .wallet-popup, .order-popup {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      z-index: 9999;
+      max-width: 400px;
+      width: 90%;
+    }
+    .wallet-popup img, .order-popup img {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+    .wallet-popup input, .order-popup input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+    }
+    .wallet-popup button, .order-popup button {
+      width: 100%;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #f093fb, #f5576c);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(245,87,108,0.5);
+      cursor: pointer;
+    }
+    .wallet-popup button:hover, .order-popup button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.ibb.co/ksnBYzQt/Picsart-25-05-02-17-50-59-037.png" alt="Logo">
+    <div class="wallet" onclick="toggleWalletPopup()">Wallet</div>
+  </header>
+  <h1>Rao's smm services</h1>
+  <div class="counter">
+    Total Orders Today: <span id="orderCount">1786</span>
+  </div>
+  <div class="services">
+    <div class="service">
+      <select id="serviceType">
+        <option value="views">Instagram Views</option>
+        <option value="followers">Instagram Followers</option>
+        <option value="likes">Instagram Likes</option>
+        <option value="comments">Instagram Comments</option>
+        <option value="bluetick">Instagram Blue Tick</option>
+      </select>
+      <input type="text" id="link" placeholder="Enter Instagram Link">
+      <input type="number" id="quantity" placeholder="Enter Quantity">
+      <input type="text" id="price" placeholder="Price will appear here" readonly>
+      <button onclick="openOrderPopup()">Submit Order</button>
+    </div>
+  </div>  <div class="wallet-popup" id="walletPopup">
+    <h3 style="text-align:center; margin-bottom: 20px;">Add Money to Wallet</h3>
+    <img src="https://i.ibb.co/TDT83BVk/Picsart-25-03-03-13-42-58-154.jpg" alt="QR Code">
+    <input type="number" id="amount" placeholder="Enter Amount (1 - 1000)">
+    <input type="text" id="utr" placeholder="Enter UTR Number">
+    <input type="text" id="holder" placeholder="Account Holder Name">
+    <button onclick="submitWallet()">Submit Payment</button>
+  </div>  <div class="order-popup" id="orderPopup">
+    <h3 style="text-align:center; margin-bottom: 20px;">Complete Your Payment</h3>
+    <img src="https://i.ibb.co/TDT83BVk/Picsart-25-03-03-13-42-58-154.jpg" alt="QR Code">
+    <p id="payText" style="text-align:center; font-size:1.2em; margin-bottom:15px;"></p>
+    <input type="text" id="orderUtr" placeholder="Enter UTR Number">
+    <input type="text" id="orderHolder" placeholder="Account Holder Name">
+    <button onclick="submitFinalOrder()">Submit Order</button>
+  </div>  <a href="https://wa.me/919499473347" class="whatsapp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60">
+  </a>  <script>
+    let order = 1786;
+    setInterval(() => {
+      order++;
+      document.getElementById("orderCount").innerText = order;
+    }, 5000);
+
+    function calculatePrice() {
+      const type = document.getElementById("serviceType").value;
+      const qty = parseFloat(document.getElementById("quantity").value);
+      let price = 0;
+      if (type === "views") price = (qty / 1000) * 1.1;
+      if (type === "followers") price = (qty / 1000) * 89;
+      if (type === "likes") price = (qty / 1000) * 9;
+      if (type === "comments") price = qty * 0.5;
+      if (type === "bluetick") price = 99;
+      document.getElementById("price").value = `₹${price.toFixed(2)}`;
+    }
+
+    document.getElementById("quantity").addEventListener("input", calculatePrice);
+    document.getElementById("serviceType").addEventListener("change", calculatePrice);
+
+    function openOrderPopup() {
+      const type = document.getElementById("serviceType").value;
+      const qty = document.getElementById("quantity").value;
+      const price = document.getElementById("price").value;
+      if (!qty || !price || qty <= 0) {
+        alert("Please enter valid quantity to proceed");
+        return;
+      }
+      document.getElementById("payText").innerText = `You need to pay ${price} for get your service`;
+      document.getElementById("orderPopup").style.display = 'block';
+    }
+
+    function submitFinalOrder() {
+      const type = document.getElementById("serviceType").value;
+      const link = document.getElementById("link").value;
+      const qty = document.getElementById("quantity").value;
+      const price = document.getElementById("price").value;
+      const utr = document.getElementById("orderUtr").value;
+      const name = document.getElementById("orderHolder").value;
+      const message = `New SMM Order\nService: ${type}\nLink: ${link}\nQuantity: ${qty}\nPrice: ${price}\nUTR: ${utr}\nName: ${name}`;
+      sendTelegramMessage(message);
+      alert("Order Submitted Successfully!");
+      document.getElementById("orderPopup").style.display = 'none';
+    }
+
+    function toggleWalletPopup() {
+      const popup = document.getElementById("walletPopup");
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
+
+    function submitWallet() {
+      const amt = document.getElementById("amount").value;
+      const utr = document.getElementById("utr").value;
+      const holder = document.getElementById("holder").value;
+      const msg = `Wallet Top-up Request:\nAmount: ₹${amt}\nUTR: ${utr}\nAccount Holder: ${holder}`;
+      sendTelegramMessage(msg);
+      alert("Wallet request sent!");
+      toggleWalletPopup();
+    }
+
+    function sendTelegramMessage(text) {
+      const token = "8141248526:AAFIbcmyATNH19QsnTx_cxxkVV7g2MKso_M";
+      const chatId = "7034227141";
+      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+      fetch(url);
+    }
+  </script></body>
+</html>
